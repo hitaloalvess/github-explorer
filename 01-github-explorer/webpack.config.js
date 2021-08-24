@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const loader = require('sass-loader');
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
 module.exports = {
@@ -19,17 +21,24 @@ module.exports = {
         } 
     },
     plugins:[
+        isDevelopment && new ReactRefreshWebpackPlugin(),
         new HtmlWebpackPlugin({
             template:path.resolve(__dirname, 'public/index.html'), //utilizará o arquivo index.html como template e irá gerar um novo arquivo index dentro de dist, com a referência a este arquivo de config do webpack já embutido
         })
-    ],
+    ].filter(Boolean),//remove qualquer valor boolean contido no array
     module: {
         rules: [
             { // regras para arquivos js
                 test: /\.jsx$/, //retorna um booleano dizendo se o arquivo é js ou não
                 exclude: /node_modules/, //não aplica as regras para arquivos que vierem de node_modules, visto que esses já devem vir preparados para serem entendidos pelo browser (a responsabilidade de fazer essa compatibibilidade, deve ser da biblioteca e não do projeto em si)
-                use:'babel-loader' //Realiza a integração entre o babel e webpack, portanto para todo arquivo js, o webpack utilizará o babel para converte-lo para um formato compatível ao browser
-
+                use:{
+                    loader: require.resolve('babel-loader'), //Realiza a integração entre o babel e webpack, portanto para todo arquivo js, o webpack utilizará o babel para converte-lo para um formato compatível ao browser
+                    options:{
+                        plugins:[
+                            isDevelopment && require.resolve('react-refresh/babel') //retorna uma string com o caminho para o modulo
+                        ].filter(Boolean)
+                    }
+                } 
             },
             {
                 test: /\.scss$/,
