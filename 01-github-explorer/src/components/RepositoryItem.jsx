@@ -2,8 +2,8 @@ const RepositoryItem = ({repository}) => {
     return ( 
                 <li>
                     <h3>{repository.name}</h3>
-                    <p>{repository.description}</p>
-                    <a href={repository.link}>
+                    <p>{repository.description ? repository.description : 'Sem descrição'}</p>
+                    <a href={repository.html_url}>
                         Acessar repositório
                     </a>
                  </li>
