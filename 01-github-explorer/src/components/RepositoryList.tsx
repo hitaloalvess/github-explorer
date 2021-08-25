@@ -3,15 +3,15 @@ import { useEffect, useState } from "react";
 
 import '../styles/repository.scss';
 
-const repository = {
-    name:'unform',
-    description:'Form in React',
-    link: 'https://github.com/unform/unform'
+interface Repository{
+    name:string;
+    description:string;
+    html_url:string;
 }
 
-const RepositoryList = () => {
+export function RepositoryList(){
     
-    const [repositories, setRepositories] = useState([]);
+    const [repositories, setRepositories] = useState<Repository[]>([]);
 
     useEffect( () => {
         fetch('https://api.github.com/users/hitaloalvess/repos')
@@ -31,4 +31,4 @@ const RepositoryList = () => {
             </section>)
 }
  
-export default RepositoryList;
+// export default RepositoryList;
