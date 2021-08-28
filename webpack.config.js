@@ -15,11 +15,11 @@ module.exports = {
     resolve:{
         extensions: ['.js', '.jsx', '.ts', '.tsx'],  //tipos de arquivos que webpack poderá ler
     },
-    devServer:{
-        static:{
-            directory:  path.resolve(__dirname, 'public'), //referencia a pasta onde se encontra o arquivo html estático
-        } 
-    },
+        devServer:{
+            static:{
+                directory:  path.resolve(__dirname, 'public'), //referencia a pasta onde se encontra o arquivo html estático
+            } 
+        },
     plugins:[
         isDevelopment && new ReactRefreshWebpackPlugin(),
         new HtmlWebpackPlugin({
