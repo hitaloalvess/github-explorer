@@ -16,7 +16,10 @@ export function RepositoryList(){
     useEffect( () => {
         fetch('https://api.github.com/users/hitaloalvess/repos')
         .then(resp => resp.json())
-        .then(data => setRepositories(data));
+        .then(data => {
+            console.log(data);
+            setRepositories(data)
+        });
     }, []);
     
 
