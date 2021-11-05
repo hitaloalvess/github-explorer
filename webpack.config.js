@@ -7,7 +7,7 @@ const isDevelopment = process.env.NODE_ENV !== 'production'
 module.exports = {
     mode: isDevelopment ? 'development': 'production',
     devtool: isDevelopment ? 'eval-source-map' : 'source-map', //Source-map -> em casos de erro possibilita a visualização do arquivo estático original, sem as alterações feitas pelo webpack
-    entry: path.resolve(__dirname, 'src', 'index.tsx') ,//Arquivo inicial da aplicação
+    entry:path.resolve(__dirname, 'src', 'index.tsx'), //Arquivo inicial da aplicação 
     output:{ //Configuração do arquivo de saída
         path: path.resolve(__dirname, 'dist'), //caminho
         filename: 'bundle.js' //nome

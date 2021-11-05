@@ -1,12 +1,14 @@
 
-import { FormEventHandler } from 'react';
+import { FormEvent, FormEventHandler } from 'react';
 import '../styles/searchRepository.scss'
 
 interface SearchRepositoryProps{
-    handleSubmit: FormEventHandler<HTMLFormElement>;
+    handleSubmit: (event: FormEvent) => void;
     setUrl: (url : string) => void;
     url: string;
 }
+
+
 
 export default function SearchRepository( { handleSubmit, url, setUrl } : SearchRepositoryProps){
 
@@ -18,8 +20,7 @@ export default function SearchRepository( { handleSubmit, url, setUrl } : Search
                 value={url}
                 onChange={e => setUrl(e.target.value)}
             />
-            <button type="button">Pesquisar</button>
-
+            <button type="submit">Pesquisar</button>
             
         </form>
     );

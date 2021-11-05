@@ -1,16 +1,11 @@
 import RepositoryItem from "./RepositoryItem"
 import { useEffect, useState } from "react";
 
+
+import { Repository } from "../@types";
+
 import '../styles/repository.scss';
 
-interface Repository{
-    name:string;
-    description:string;
-    html_url:string;
-    forks: number;
-    stargazers_count: number;
-    watchers: number;
-}
 
 interface RepositoryListProps{
     repositories: Repository[];

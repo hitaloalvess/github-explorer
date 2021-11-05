@@ -1,60 +1,71 @@
 import { FormEvent, useEffect, useState } from 'react';
+import axios from 'axios';
+
+import { Repository } from '../../@types';
+
 import Header from '../../components/Header';
 import { RepositoryList } from '../../components/RepositoryList';
 import SearchRepository from '../../components/SearchRepository';
 
-import axios from 'axios';
-
 import './styles.scss';
-
-interface Repository{
-    name:string;
-    description:string;
-    html_url:string;
-    forks: number;
-    stargazers_count: number;
-    watchers: number;
-}
 
 export default function Home(){
 
     const [url, setUrl] = useState<string>('');
-    const [repositories, setRepositories] = useState<Repository[]>([]);
+    const [repositories, setRepositories] = useState<Repository[]>( () => {
+        const repos = localStorage.getItem('github-repositories');
 
-    useEffect( () => {
-        const data = localStorage.getItem('github-repositories')
+        if(repos){
+            return JSON.parse(repos);
+        }
 
-        console.log(data)
-    }, []);
+        return [];
+    });
+
 
     useEffect( () => {
         localStorage.setItem('github-repositories', JSON.stringify(repositories));
     }, [repositories])
 
-    async function handleSubmit(event: FormEvent<HTMLFormElement>) : Promise<void>{
-        console.log('Antes do preventDefault')
-        event.preventDefault();
-        console.log('Apos preventDefault')
-        try{
-            // await fetch(`https://api.github.com/repos/${url}`)
-            // .then(resp => resp.json())
-            // .then(data => {
-            //     console.log(data);
 
-            //     setRepositories(
-            //         [...repositories, data]
-            //     )
-            // });
-
-            const response = await axios.get<Repository>(`https://api.github.com/repos/${url}`)
-            const { data }  = response
-
-            setRepositories(
-                [...repositories, data]
-            )
-        }catch(err){
-            console.log('Error');
+    function verifObjectDuplicate(data : Repository){
+        
+        for(let repo of repositories){
+            if(repo.id === data.id){
+                return true;
+            }
         }
+
+        return false;
+    }
+
+    async function handleSubmit(event: FormEvent){
+
+        event.preventDefault();
+            
+            if(!!!url){
+                console.log('Digite um username/repositório valido')
+                return;
+            }
+
+            try{
+                const response = await axios.get<Repository>(`https://api.github.com/repos/${url}`)
+                const { data }  = response
+
+                console.log(data)
+                if(!verifObjectDuplicate(data)){
+                    setRepositories(
+                        [...repositories, data]
+                    )
+                }else{
+                    console.log('Repositório existente');
+                    return;
+                }
+
+
+            }catch(error){
+                console.log(`Erro: ${error}`)
+            }
     }
 
     return(

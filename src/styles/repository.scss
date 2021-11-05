@@ -1,31 +1,14 @@
 .repository-list{
-    // padding: 3rem;
 
     ul{
-        list-style: none;
-        margin-top: 1.6rem;
+        margin-top: 2.4rem;
 
          li{
+
            & + li{
             margin-top: 2rem;
            }
 
-           h3{
-               font-size: 2.4rem;
-               font-weight: bold;
-           }
-
-           p{
-            font-size: 1.4rem;
-            color: #444;
-            margin: .8rem 0;
-            }
-
-            a{
-                display: inline-block;
-                text-decoration: none;
-                color: #8257e6;
-            }
         }
     }
 }
