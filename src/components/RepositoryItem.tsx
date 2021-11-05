@@ -3,6 +3,9 @@ interface RepositoryItemProps{
         name:string;
         description:string;
         html_url:string;
+        forks: number;
+        stargazers_count: number;
+        watchers: number;
     }
 }
 

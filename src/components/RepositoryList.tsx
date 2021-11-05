@@ -7,20 +7,18 @@ interface Repository{
     name:string;
     description:string;
     html_url:string;
+    forks: number;
+    stargazers_count: number;
+    watchers: number;
 }
 
-export function RepositoryList(){
-    
-    const [repositories, setRepositories] = useState<Repository[]>([]);
+interface RepositoryListProps{
+    repositories: Repository[];
+}
 
-    useEffect( () => {
-        fetch('https://api.github.com/users/hitaloalvess/repos')
-        .then(resp => resp.json())
-        .then(data => {
-            console.log(data);
-            setRepositories(data)
-        });
-    }, []);
+export function RepositoryList( { repositories } : RepositoryListProps ){
+    
+   
     
 
     return (<section className="repository-list">
