@@ -12,12 +12,7 @@ interface RepositoryItemProps{
 const RepositoryItem = ({repository} : RepositoryItemProps) => {
     return ( 
                 <li className="infoUser-card">
-                    {/* <h3>{props.repository.name}</h3>
-                    <p>{props.repository.description ? props.repository.description : 'Sem descrição'}</p>
-                    <a href={props.repository.html_url}>
-                        Acessar repositório
-                    </a> */}
-                    <a href="" >
+                    <a href={repository.html_url} >
                         <div className="card-image">
                             <img src={repository.owner.avatar_url} alt="avatar do repositório" />
                         </div>

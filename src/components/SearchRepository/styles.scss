@@ -1,0 +1,52 @@
+.search-container{
+    
+    margin-bottom: 4.4rem;
+    .form{
+        height: 5rem;
+        max-width: 65rem;
+        margin: 4.4rem 0 1.6rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        input{
+            width: 80%;
+            height: 100%;
+            padding: 0.5rem  2.4rem ;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+            font-size: 1.6rem;
+            color: var(--black-medium);
+
+            &::placeholder{
+                font-size: 1.6rem;
+                font-style: italic;
+            }
+
+        }
+
+        button{
+            width: 20%;
+            height: 100%;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--black-medium);
+            background-color: var(--green);
+
+            &:hover{
+                filter: brightness(0.9);
+                cursor: pointer;
+            }
+        }
+        
+    }
+
+    .error-message{
+        font-size: 1.4rem;
+        font-style: italic;
+        color: var(--red);
+    }
+}
