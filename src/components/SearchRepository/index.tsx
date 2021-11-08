@@ -19,7 +19,7 @@ export default function SearchRepository( { handleSubmit, messageError, formRef,
             <form className="form"  onSubmit={handleSubmit} ref={formRef}>
                 <input 
                     type="text" 
-                    placeholder="Digite o username.."
+                    placeholder="Digite o username/repositório.."
                     ref={inputSearchRepositoryRef}
                 />
                 <button type="submit">Pesquisar</button>

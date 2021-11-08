@@ -2,9 +2,9 @@
   <img alt="logo github-explorer" title="github-explorer" src=".github/logo.svg" width="400px" />
 </h1>
 
-<!-- <p align="center">
-     <img src=".github/preview.gif" alt="world-trip demo" />
-</p> -->
+<p align="center">
+     <img src=".github/preview.gif" alt="github-explorer demo" />
+</p>
 
 <p align="center">
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;

@@ -57,6 +57,7 @@ export default function Home(){
                     setRepositories(
                         [...repositories, data]
                     )
+                    setMessageError('');
                 }else{
                     setMessageError('Repositório existente');
                 }
